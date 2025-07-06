@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RuralMed - Your Health, Anywhere</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #f7fafc;
+      color: #1a202c;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #2b6cb0;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 1100;
+      position: relative;
+    }
+    header div {
+      display: flex;
+      flex-direction: column;
+    }
+    header h1 {
+      font-size: 1.8rem;
+    }
+    .sub-title {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+      margin-top: 2px;
+      font-family: 'Inter', sans-serif;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #cbd5e0;
+    }
+    .hero {
+      padding: 3rem 2rem;
+      text-align: center;
+      color: white;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("C:/Users/Asus/Downloads/WhatsApp Image 2025-07-06 at 8.07.59 PM.jpeg") no-repeat center center/cover;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    .hero img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+    .buttons {
+      margin-top: 1rem;
+    }
+    .buttons button {
+      background-color: #2b6cb0;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      margin: 0.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    .buttons button:hover {
+      background-color: #2c5282;
+    }
+    .calendar-popup {
+      display: none;
+      margin-top: 1rem;
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 3rem 2rem;
+      background-color: #edf2f7;
+    }
+    .feature {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      max-width: 300px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .feature:hover {
+      transform: scale(1.03);
+    }
+    .feature h3 {
+      margin-bottom: 0.5rem;
+      color: #2b6cb0;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      z-index: 1000;
+    }
+    .popup h4 {
+      margin-bottom: 1rem;
+      color: #2b6cb0;
+    }
+    .popup-close {
+      margin-top: 1rem;
+      background-color: #2b6cb0;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    footer {
+      background-color: #1a202c;
+      color: #cbd5e0;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+
+    /* New styles for language popup */
+    #languagePopup {
+      display: none;
+      position: fixed;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      border-radius: 12px;
+      z-index: 1100;
+      max-width: 320px;
+      text-align: center;
+    }
+    #languagePopup h4 {
+      margin-bottom: 1rem;
+      color: #2b6cb0;
+    }
+    #languagePopup select {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #10cdb1;
+    }
+    #languagePopup button {
+      margin-top: 1rem;
+      background-color: #2b6cb0;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    #languagePopup button:hover {
+      background-color: #244a8a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>RuralMed</h1>
+      <small class="sub-title">BY - CON, IGMC&amp;RI</small>
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#register">Register</a>
+      <a href="#login">Log In</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Connecting Rural Communities with Better Healthcare</h2>
+    <p>RuralMed brings accessible and personalized nursing follow-up care to rural areas through innovative decentralized solutions.</p>
+    <img src="https://source.unsplash.com/600x400/?rural,healthcare" alt="Rural healthcare" />
+    <div class="buttons">
+      <button onclick="toggleCalendar()">Your Next Visit</button>
+      <button onclick="alert('Dialing Emergency...')">Emergency Call</button>
+      <button onclick="window.open('https://www.google.com/maps/search/health+center+near+me', '_blank')">Find Nearby Center</button>
+      <button onclick="toggleLanguagePopup()">Select Language</button>
+    </div>
+    <div id="calendarPopup" class="calendar-popup">
+      <label for="visit-date">Select Your Visit Date:</label>
+      <input type="date" id="visit-date" name="visit-date" style="margin-top: 0.5rem; padding: 0.5rem; width: 100%; border: 1px solid #ccc; border-radius: 4px;" />
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature" onclick="showPopup('popup1')">
+      <h3>Telemedicine Access</h3>
+      <p>Consult with healthcare professionals online from anywhere.</p>
+    </div>
+    <div class="feature" onclick="showPopup('popup2')">
+      <h3>24/7 Support</h3>
+      <p>Always-on service to support rural patients in need.</p>
+    </div>
+    <div class="feature" onclick="showPopup('popup3')">
+      <h3>Local Nurse Visits</h3>
+      <p>Scheduled in-person visits from trained rural health workers.</p>
+    </div>
+    <div class="feature" onclick="showPopup('popup4')">
+      <h3>Home Nurse Facility</h3>
+      <p>Get essential care and health monitoring right at your home.</p>
+    </div>
+  </section>
+
+  <div id="popup1" class="popup">
+    <h4>Telemedicine Access</h4>
+    <p>Teleconsultation with doctors via video calls and chat for diagnosis, prescription, and advice.</p>
+    <button class="popup-close" onclick="closePopup('popup1')">Close</button>
+  </div>
+  <div id="popup2" class="popup">
+    <h4>24/7 Support</h4>
+    <p>Round-the-clock helpline for emergencies, queries, and support coordination.</p>
+    <button class="popup-close" onclick="closePopup('popup2')">Close</button>
+  </div>
+  <div id="popup3" class="popup">
+    <h4>Local Nurse Visits</h4>
+    <p>Community health workers will visit your location for scheduled follow-up and routine care.</p>
+    <button class="popup-close" onclick="closePopup('popup3')">Close</button>
+  </div>
+  <div id="popup4" class="popup">
+    <h4>Home Nurse Facility</h4>
+    <p>We provide licensed nurses to deliver professional medical care and support directly at your doorstep for bedridden or elderly patients.</p>
+    <button class="popup-close" onclick="closePopup('popup4')">Close</button>
+  </div>
+
+  <!-- Language selection popup -->
+  <div id="languagePopup">
+    <h4>Select Language</h4>
+    <select id="languageSelect" aria-label="Select language">
+      <option value="" disabled selected>Choose a language</option>
+      <option value="ta">Tamil</option>
+      <option value="te">Telugu</option>
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="bn">Bengali</option>
+      <option value="mr">Marathi</option>
+      <option value="ur">Urdu</option>
+      <option value="ml">Malayalam</option>
+    </select>
+    <button onclick="closeLanguagePopup()">Close</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 RuralMed. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleCalendar() {
+      const calendar = document.getElementById('calendarPopup');
+      calendar.style.display = calendar.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function showPopup(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function closePopup(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function toggleLanguagePopup() {
+      const langPopup = document.getElementById('languagePopup');
+      langPopup.style.display = langPopup.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function closeLanguagePopup() {
+      document.getElementById('languagePopup').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
